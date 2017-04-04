@@ -260,7 +260,7 @@ module CanCan
           break if options[:unless] && controller.send(options[:unless])
           controller.authorize! controller.params[:action], controller.params[:controller]
         end
-        after_filter(options.slice(:only, :except)) do |controller|
+        after_action(options.slice(:only, :except)) do |controller|
           break if options[:if] && !controller.send(options[:if])
           break if options[:unless] && controller.send(options[:unless])
           unless controller.current_ability.fully_authorized? controller.params[:action], controller.params[:controller]
